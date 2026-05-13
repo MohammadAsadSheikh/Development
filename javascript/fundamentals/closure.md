@@ -1,14 +1,18 @@
-Closure is a function, haviuung access to the child scope, even after the parent function has been closed.
+A closure is a function that remembers and can access variables from its outer (parent) scope even after the outer function has finished executing.
+
 
 const outer = () => {
-    var count = 1;
+    let count = 1;
+
     const inner = () => {
-        console.log(count)
-        count++
-    }
+        console.log(count);
+        count++;
+    };
+
     return inner;
-}
+};
 
 const innerFunc = outer();
-innerFunc();
-innerFunc();
+
+innerFunc(); // 1
+innerFunc(); // 2

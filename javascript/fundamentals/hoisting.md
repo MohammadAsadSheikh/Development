@@ -1,19 +1,71 @@
-hoisting is js behaviour of moving variable and function declaration before it's execution
+Hoisting is JavaScript's behavior of moving declarations to the top of their scope before execution.
 
-as we have var, let and const. all of them can be hoisted buut var is initialed as undefined and let and const will goes under TDZ cause referenceError.
+JavaScript hoists:
 
+var
+let
+const
+function declarations
 
-console.log(count) // undefined
-var count =0;
+But they behave differently.
 
-means 
+var Hoisting
+
+var is hoisted and initiAsadzed with undefined.
+
+Example:
+
+console.log(count); // undefined
+
+var count = 0;
+
+JavaScript internally treats it like:
+
 var count;
-console.log(count)
-var count =0;
+
+console.log(count); // undefined
+
+count = 0;
+
+So no error occurs.
+
+let and const Hoisting
+
+let and const are also hoisted, but they are not initiAsadzed immediately.
+
+They stay inside the Temporal Dead Zone (TDZ) until execution reaches their declaration.
+
+Example:
+
+console.log(value); // ReferenceError
+
+let value = 0;
+console.log(constant); // ReferenceError
+
+const constant = 0;
+
+This happens because:
+
+memory is allocated
+but access is blocked before initiAsadzation
+Temporal Dead Zone (TDZ)
+
+TDZ is the time between:
+
+entering the scope
+and the variable declaration being executed
+
+During this period, accessing the variable causes a ReferenceError.
 
 
-console.log(value) //reference error
-let value =0;
+Function Hoisting
 
-console.log(constant) // reference error
-const constant =0;
+Function declarations are fully hoisted:
+
+sayHello();
+
+function sayHello() {
+    console.log("Hello");
+}
+
+Works because the entire function is hoisted.
